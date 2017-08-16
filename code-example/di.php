@@ -154,9 +154,9 @@ $c->foo = function ($c) {
     return new Foo($c->bar);
 };
 // 从容器中取得Foo
-$foo = $c->foo;
-$foo->doSomething(); // Bim::doSomething|Bar::doSomething|Foo::doSomething
-die;
+//$foo = $c->foo;
+//$foo->doSomething(); // Bim::doSomething|Bar::doSomething|Foo::doSomething
+//die;
 
 // ----
 $di = new Container();
