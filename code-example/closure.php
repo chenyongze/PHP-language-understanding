@@ -91,21 +91,27 @@ echo "==========\n";
 //$b = new stdClass();
 $b = @ (object) $kb;
 $b->d = 'dddddddddd';
-$b->h = 'hhhhhhhhhh';
+$b->h = 'b';
 $b->z = 'zzzzzzzzzz';
 print_r($b);
 
 echo "==========\n";
 
-function am($x){
-    echo '-';
+function am(&$x){
+//    echo '-';
 //    echo $x;
-    print_r($x);
+//    print_r($x);
+    if($x == 'b'){
+        unset($x);
+    }else{
+        return $x;
+    }
 }
 
-array_walk($b,"am");
+$x = array_map('am',(array)$b);
 
-
+print_r($x);
+die;
 
 echo "==========\n";
 
@@ -166,4 +172,40 @@ print_r(implode(',',array_values(array_map("dh",$arr))));
 
 
 
+
+
+class ArrayWalk {
+    /**
+     * properties:
+     */
+    private $body_chunk = array('0'=>['id'=>'Dewen'], '1'=>['id'=>'PHP'], 2=>['id'=>'Linux']);
+    /////////////////////////////////////////////////
+    // VARIABLE METHODS
+    /////////////////////////////////////////////////
+    public function ArrayWalkx (){
+
+    }
+
+    public function func_1(){
+        print_r($this->body_chunk);
+        array_walk ($this->body_chunk, array($this,'SpellStrToLower'),$this->body_chunk);
+        print_r($this->body_chunk);
+    }
+    public function SpellStrToLower (&$str){
+        if($str['id'] == 'php'){
+//            countine;
+//            unset($str);
+//            continue;
+//            break;
+            exit(1);
+        }
+        $str['id'] = strtolower ($str['id']);
+        $str['name'] = 'hhhhh';
+//        $str['O'] = 'xxxxxx';
+    }
+}
+$obj = new ArrayWalk();
+echo '<PRE>';
+$obj->func_1();
+echo '</PRE>';
 
